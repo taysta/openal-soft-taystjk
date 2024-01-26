@@ -1297,7 +1297,11 @@ endif()
 if(NOT WIN32)
     set(LIBNAME "openal")
 else()
-    set(LIBNAME "OpenAL32")
+    if(NOT WIN64)
+        set(LIBNAME "soft_oal.x86")
+    else()
+        set(LIBNAME "soft_oal.x86_64")
+    endif()
 endif()
 
 # Needed for openal.pc.in
